@@ -103,16 +103,16 @@ class Comments(models.Model):
     def __str__(self):
         return self.comment
     
-# class Likes(models.Model):
-#     image = models.ForeignKey(Picture, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Likes(models.Model):
+    image = models.ForeignKey(Picture, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-#     def save_likes(self):
-#         self.save()
+    def save_likes(self):
+        self.save()
 
-#     def delete_like(self):
-#         self.delete()
+    def delete_like(self):
+        self.delete()
 
-#     def count_likes(self):
-#         likes = self.likes.count()
-#         return likes
+    def count_likes(self):
+        likes = self.likes.count()
+        return likes
