@@ -1,12 +1,12 @@
-# from django.shortcuts import render, redirect
-# from .forms import ProfileForm,ImageForm, CommentForm
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.models import User
-# from django.http import HttpResponse, Http404, HttpResponseRedirect
-# from .models import Picture, Profile,Comments,Likes
-# from vote.managers import VotableManager
+from django.shortcuts import render, redirect
+from .forms import ProfileForm,ImageForm, CommentForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from .models import Picture, Profile,Comments,Likes
+from vote.managers import VotableManager
 
-# votes = VotableManager()
+votes = VotableManager()
 
 
 # # Create your views here.
