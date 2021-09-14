@@ -1,9 +1,9 @@
-# from django.db import models
-# import datetime as dt
-# from django.contrib.auth.models import User
-# from tinymce.models import HTMLField
-# from vote.models import VoteModel
-# from vote.managers import VotableManager
+from django.db import models
+import datetime as dt
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
+from vote.models import VoteModel
+from vote.managers import VotableManager
 
 # # Create your models here.
 # class Profile(models.Model):
