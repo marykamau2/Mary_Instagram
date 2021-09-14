@@ -5,33 +5,33 @@ from tinymce.models import HTMLField
 from vote.models import VoteModel
 from vote.managers import VotableManager
 
-# # Create your models here.
-# class Profile(models.Model):
-#     photo = models.ImageField(upload_to='images', blank =True, null = True)
-#     Bio = models.TextField(max_length=1500)
-#     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+# Create your models here.
+class Profile(models.Model):
+    photo = models.ImageField(upload_to='images', blank =True, null = True)
+    Bio = models.TextField(max_length=1500)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
     
-#     def __str__(self):
-#         return self.Bio
+    def __str__(self):
+        return self.Bio
     
-#     def save_profile(self):
-#         self.save()
+    def save_profile(self):
+        self.save()
         
-#     def delete_profile(self):
-#         self.delete()
+    def delete_profile(self):
+        self.delete()
         
-#     @classmethod
-#     def update_bio(cls,id,bio):
-#         update_profile = cls.objects.filter(id = id).update(bio =bio)
-#         return update_profile
-#     @classmethod
-#     def get_all_profiles(cls):
-#         profile = Profile.objects.all()
-#         return profile
+    @classmethod
+    def update_bio(cls,id,bio):
+        update_profile = cls.objects.filter(id = id).update(bio =bio)
+        return update_profile
+    @classmethod
+    def get_all_profiles(cls):
+        profile = Profile.objects.all()
+        return profile
     
-#     @classmethod
-#     def search_user(cls,user):
-#         return cls.objects.filter(user__username__icontains = user).all()
+    @classmethod
+    def search_user(cls,user):
+        return cls.objects.filter(user__username__icontains = user).all()
         
 # class Picture(VoteModel,models.Model):
 #     image = models.ImageField(upload_to = 'images/',blank = False, null = True)
