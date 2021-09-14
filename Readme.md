@@ -45,5 +45,7 @@ MARY KAMAU
 - Boostrap
 - HTML
 - CSS
-### Licence
-This project is under the MIT licence
+### License
+[MIT Licence](https://choosealicense.com/licenses/mit/)
+
+Copyright (c) 2021 Mary Inc.
