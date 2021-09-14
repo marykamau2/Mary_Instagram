@@ -81,27 +81,27 @@ class Picture(VoteModel,models.Model):
     class Meta:
         ordering = ['-date_uploaded']
     
-# class Comments(models.Model):
-#     comment = models.CharField(max_length = 50, blank=True)
-#     posted = models.DateTimeField(auto_now_add=True)
-#     image = models.ForeignKey(Picture, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Comments(models.Model):
+    comment = models.CharField(max_length = 50, blank=True)
+    posted = models.DateTimeField(auto_now_add=True)
+    image = models.ForeignKey(Picture, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-#     def save_comment(self):
-#         self.save()
+    def save_comment(self):
+        self.save()
 
-#     def delete_comment(self):
-#         self.delete()
+    def delete_comment(self):
+        self.delete()
         
         
-#     @classmethod
-#     def get_comments(cls,id):
-#         comments = cls.objects.filter(image__id=id)
-#         return comments
+    @classmethod
+    def get_comments(cls,id):
+        comments = cls.objects.filter(image__id=id)
+        return comments
 
 
-#     def __str__(self):
-#         return self.comment
+    def __str__(self):
+        return self.comment
     
 # class Likes(models.Model):
 #     image = models.ForeignKey(Picture, on_delete=models.CASCADE)
