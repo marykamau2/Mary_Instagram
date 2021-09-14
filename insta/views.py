@@ -110,11 +110,11 @@ def follow(request, user_id):
 
     return redirect('home')
 
-# def unfollow(request, user_id):
-#     other_user = User.objects.get(id = user_id)
-#     follow = Follow.objects.remove_follower(request.user, other_user)
+def unfollow(request, user_id):
+    other_user = User.objects.get(id = user_id)
+    follow = Follow.objects.remove_follower(request.user, other_user)
 
-#     return redirect('home')
+    return redirect('home')
 
 # @login_required(login_url='/accounts/register/')
 # def like_images(request, id):
