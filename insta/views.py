@@ -116,15 +116,15 @@ def unfollow(request, user_id):
 
     return redirect('home')
 
-# @login_required(login_url='/accounts/register/')
-# def like_images(request, id):
-#         image = Picture.get_one_image(id)
-#         user = request.user
-#         user_id = user.id
+@login_required(login_url='/accounts/register/')
+def like_images(request, id):
+        image = Picture.get_one_image(id)
+        user = request.user
+        user_id = user.id
 
-#         if user.is_authenticated:
-#                 uplike = image.votes.up(user_id)
-#                 image.like_add = image.votes.count()
-#                 image.save()
+        if user.is_authenticated:
+                uplike = image.votes.up(user_id)
+                image.like_add = image.votes.count()
+                image.save()
 
-#         return redirect('home')
+        return redirect('home')
