@@ -9,90 +9,90 @@ from vote.managers import VotableManager
 votes = VotableManager()
 
 
-# # Create your views here.
-# # def home(request):
-# #     return render(request,'')
-# @login_required(login_url='/accounts/login/')
+# Create your views here.
 # def home(request):
-#         current_user = request.user
-#         posts = Picture.get_all_images()  
-#         # posts = Picture.objects.all()
-#         comments = Comments.objects.all()
-#         profile = Profile.get_all_profiles()
-#         # print("Our users", posts)
-#         form = ProfileForm()
-#         if request.method == 'POST':
-#                 form = ProfileForm(request.POST, request.FILES)
-#                 if form.is_valid():
-#                         add=form.save(commit=False)
-#                         add.user = current_user
-#                         add.save()
-#                 return redirect('home')
-#         else:
-#                 form = ProfileForm()
+#     return render(request,'')
+@login_required(login_url='/accounts/login/')
+def home(request):
+        current_user = request.user
+        posts = Picture.get_all_images()  
+        # posts = Picture.objects.all()
+        comments = Comments.objects.all()
+        profile = Profile.get_all_profiles()
+        # print("Our users", posts)
+        form = ProfileForm()
+        if request.method == 'POST':
+                form = ProfileForm(request.POST, request.FILES)
+                if form.is_valid():
+                        add=form.save(commit=False)
+                        add.user = current_user
+                        add.save()
+                return redirect('home')
+        else:
+                form = ProfileForm()
 
-#                 return render(request,'displays/home.html',locals())
+                return render(request,'displays/home.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def add_image(request):
-#         current_user = request.user
-#         if request.method == 'POST':
-#                 form = ImageForm(request.POST, request.FILES)
-#                 if form.is_valid():
-#                         add=form.save(commit=False)
-#                         add.profile = current_user
-#                         add.save()
-#                 return redirect('home')
-#         else:
-#                 form = ImageForm()
-#                 return render(request,'displays/image.html', {"form":form})
+@login_required(login_url='/accounts/login/')
+def add_image(request):
+        current_user = request.user
+        if request.method == 'POST':
+                form = ImageForm(request.POST, request.FILES)
+                if form.is_valid():
+                        add=form.save(commit=False)
+                        add.profile = current_user
+                        add.save()
+                return redirect('home')
+        else:
+                form = ImageForm()
+                return render(request,'displays/image.html', {"form":form})
             
 
-# @login_required(login_url = '/accounts/login/')
-# def profile_info(request):
-#         current_user = request.user
-#         profile = Profile.objects.filter(user=current_user).first()
+@login_required(login_url = '/accounts/login/')
+def profile_info(request):
+        current_user = request.user
+        profile = Profile.objects.filter(user=current_user).first()
        
-#         posts = Picture.objects.filter(profile=current_user.id)
+        posts = Picture.objects.filter(profile=current_user.id)
         
-#         return render(request,'displays/profile.html',{"images":posts,"profile":profile})
+        return render(request,'displays/profile.html',{"images":posts,"profile":profile})
     
-# @login_required(login_url='/accounts/login/') 
-# def profile_update(request): 
-#          current_user = request.user
-#          if request.method == 'POST':
-#                 form = ProfileForm(request.POST, request.FILES)
-#                 if form.is_valid():
-#                         add=form.save(commit=False)
-#                         add.user = current_user
-#                         add.save()
-#                 return redirect('profile')
-#          else:
-#                 form = ProfileForm()
-#          return render(request,'displays/profile_update.html',{"form":form})
+@login_required(login_url='/accounts/login/') 
+def profile_update(request): 
+         current_user = request.user
+         if request.method == 'POST':
+                form = ProfileForm(request.POST, request.FILES)
+                if form.is_valid():
+                        add=form.save(commit=False)
+                        add.user = current_user
+                        add.save()
+                return redirect('profile')
+         else:
+                form = ProfileForm()
+         return render(request,'displays/profile_update.html',{"form":form})
 
-# @login_required(login_url='/accounts/login/') 
-# def comment(request,image_id):
-#         current_user=request.user
-#         image = Picture.objects.get(id=image_id)
-#         profile_owner = User.objects.get(username=current_user.username)
-#         comments = Comments.objects.all()
+@login_required(login_url='/accounts/login/') 
+def comment(request,image_id):
+        current_user=request.user
+        image = Picture.objects.get(id=image_id)
+        profile_owner = User.objects.get(username=current_user.username)
+        comments = Comments.objects.all()
         
-#         if request.method == 'POST':
-#                 form = CommentForm(request.POST, request.FILES)
-#                 if form.is_valid():
-#                         comment = form.save(commit=False)
-#                         comment.image = image
-#                         comment.user = request.user
-#                         comment.save()
+        if request.method == 'POST':
+                form = CommentForm(request.POST, request.FILES)
+                if form.is_valid():
+                        comment = form.save(commit=False)
+                        comment.image = image
+                        comment.user = request.user
+                        comment.save()
             
                        
-#                 return redirect('home')
-#         else:
-#                 form = CommentForm()
-#         return render(request, 'displays/comment.html',locals())
+                return redirect('home')
+        else:
+                form = CommentForm()
+        return render(request, 'displays/comment.html',locals())
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 # def search_results(request):
 #     if 'username' in request.GET and request.GET["username"]:
 #         search_term = request.GET.get("username")
